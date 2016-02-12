@@ -63,17 +63,29 @@ def outprint(thing,nospace=False):
 #stdout.write=newthing        
 ##function for printing using rows and columns includes column break and row breaking
 
-def draw_columns(start=0,end=80,rowbreak=80):
+def draw_columns(start=0,end=80,rowbreak=80,**kwargs):
 
+    num_breaks=0
+    
 
-    for yy in range(0,size[1]):
+    for yy in range(0,HEIGHT):
     
         if yy%rowbreak==0:
+        
+            num_breaks+=1
             
             ##rulers
             
             stdout.write("\n")
-            stdout.write("PAGEBREAK")
+            stdout.write("PAGEBREAK")                
+                
+            stdout.write("\n")
+            stdout.write("Columns "+str(start+1)+" to "+str(end+1)+" top row is "+str(yy+1)+" rowbreak: "+str(num_breaks))
+            
+            if "pagenum" in kwargs:
+                stdout.write("\n")
+                stdout.write("Page - "+str(kwargs.get("pagenum")))
+                
             stdout.write("\n")
             stdout.write("\n")
             outprint("      ",nospace=True)
@@ -111,15 +123,20 @@ def draw_columns(start=0,end=80,rowbreak=80):
 
 WIDTH_LIMIT=59
 ROW_BREAK=95
+
 if size[0]<=WIDTH_LIMIT: WIDTH_LIMIT=size[0]
+HEIGHT=size[1]
 
 start=0
 end=WIDTH_LIMIT
 if size[0]<WIDTH_LIMIT: end=size[0]
 
+p=0
+
 while (start<size[0]):
 
-    draw_columns(start=start,end=end,rowbreak=ROW_BREAK)
+    p+=1
+    draw_columns(start=start,end=end,rowbreak=ROW_BREAK,pagenum=p) ##pagenum is a kwarg - aarrrrgh!
     end+=WIDTH_LIMIT
     if end>size[0]: end=size[0]
     start+=WIDTH_LIMIT
