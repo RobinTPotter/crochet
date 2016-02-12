@@ -80,7 +80,7 @@ def draw_columns(start=0,end=80,rowbreak=80,**kwargs):
             stdout.write("PAGEBREAK")                
                 
             stdout.write("\n")
-            stdout.write("Columns "+str(start+1)+" to "+str(end+1)+" top row is "+str(yy+1)+" rowbreak: "+str(num_breaks))
+            stdout.write("Columns "+str(start+1)+" to "+str(end)+" top row is "+str(yy+1)+" rowbreak: "+str(num_breaks))
             
             if "pagenum" in kwargs:
                 stdout.write("\n")
@@ -121,8 +121,8 @@ def draw_columns(start=0,end=80,rowbreak=80,**kwargs):
         #print()
         
 
-WIDTH_LIMIT=59
-ROW_BREAK=95
+WIDTH_LIMIT=80
+ROW_BREAK=45
 
 if size[0]<=WIDTH_LIMIT: WIDTH_LIMIT=size[0]
 HEIGHT=size[1]
