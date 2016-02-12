@@ -1,0 +1,17 @@
+to operate, you'll need a RGB image of any size.
+
+run:
+
+python crochetme.py "photo - Copy.png" 2.5 > output.txt
+
+in the same folder. 2.5 is the ratio for resizing
+
+near the bottom of the code is:
+
+WIDTH_LIMIT=59
+ROW_BREAK=95
+
+which defines the number of column and number of rows per chunk.
+
+simply redirect to file and load in you favourite text printing,
+output includes the work "PAGEBREAK" for easy page breaking
